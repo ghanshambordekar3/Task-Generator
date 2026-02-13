@@ -23,7 +23,7 @@ function App() {
       .then(res => res.json())
       .then(setHealth)
       .catch(() => setHealth({ backend: 'error', database: 'error', llm: 'error' }));
-  }, [result]);
+  }, [result, API_URL]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
