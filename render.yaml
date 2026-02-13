@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: tasks-generator-backend
+    env: python
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    rootDir: backend
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    
+  - type: web
+    name: tasks-generator-frontend
+    env: static
+    region: singapore
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    rootDir: frontend
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://tasks-generator-backend.onrender.com

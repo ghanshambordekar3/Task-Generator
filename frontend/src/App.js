@@ -11,13 +11,15 @@ function App() {
   const [health, setHealth] = useState(null);
   const [showStatus, setShowStatus] = useState(false);
 
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
   useEffect(() => {
-    fetch('http://localhost:5000/api/history')
+    fetch(`${API_URL}/api/history`)
       .then(res => res.json())
       .then(setHistory)
       .catch(console.error);
     
-    fetch('http://localhost:5000/api/health')
+    fetch(`${API_URL}/api/health`)
       .then(res => res.json())
       .then(setHealth)
       .catch(() => setHealth({ backend: 'error', database: 'error', llm: 'error' }));
@@ -32,7 +34,7 @@ function App() {
     }
     
     try {
-      const res = await fetch('http://localhost:5000/api/generate', {
+      const res = await fetch(`${API_URL}/api/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
