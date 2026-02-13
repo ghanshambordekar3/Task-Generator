@@ -19,4 +19,4 @@ services:
     rootDir: frontend
     envVars:
       - key: REACT_APP_API_URL
-        value: https://tasks-generator-backend.onrender.com
+        value: https://task-generator-1-i3l1.onrender.com

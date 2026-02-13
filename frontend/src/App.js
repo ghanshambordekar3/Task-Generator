@@ -11,7 +11,7 @@ function App() {
   const [health, setHealth] = useState(null);
   const [showStatus, setShowStatus] = useState(false);
 
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  const API_URL = process.env.REACT_APP_API_URL || 'https://task-generator-1-i3l1.onrender.com';
 
   useEffect(() => {
     fetch(`${API_URL}/api/history`)
